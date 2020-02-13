@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.awt.Color;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Test;
 
 import production.IncomeTax;
@@ -35,10 +34,7 @@ public class SpaceTestCases {
 		propertyTile = new Property();
 		propertyTile.setColor(Color.GRAY);
 		propertyTile.setCost(60);
-		propertyTile.setName("Mediteranian Avenue");
-		
-//		System.out.println("Property "+propertyTile.getName()+" with color "+ propertyTile.getColor()
-//				+" with cost "+ propertyTile.getCost());
+		propertyTile.setName("Mediteranian Avenue");	
 		
 		assertEquals(Color.GRAY, propertyTile.getColor());
 		assertEquals(60,propertyTile.getCost());

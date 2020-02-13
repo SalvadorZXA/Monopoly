@@ -18,9 +18,8 @@ public class IncomeTax implements Space{
 		
 	    Scanner myObj = new Scanner(System.in);
 	    System.out.println("Pay $200 or 10%?");
-
-	    String choice = myObj.nextLine();
-	    int ammountToBeDeducted = Integer.parseInt(choice);
+	    int ammountToBeDeducted = myObj.nextInt();
+	    //myObj.close();
 		
 		if(ammountToBeDeducted==200){
 			player.setMoney(player.getMoney()-200);
@@ -31,7 +30,5 @@ public class IncomeTax implements Space{
 			player.setMoney(player.getMoney()-percent);
 			System.out.println("10% has been decucted from your account.");
 		}
-		
-		myObj.close();
 	}
 }
