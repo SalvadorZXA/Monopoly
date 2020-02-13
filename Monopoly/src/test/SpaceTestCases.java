@@ -11,11 +11,13 @@ import production.Go;
 import production.IncomeTax;
 import production.Player;
 import production.Property;
+import production.RailRoad;
 
 public class SpaceTestCases {
 	
 	Property propertyTile;
 	IncomeTax incomeTaxTile;
+	RailRoad railroadTile;
 	Go goTile;
 	Player player;
 	
@@ -79,6 +81,20 @@ public class SpaceTestCases {
 		goTile.giveBasicIncome(player);
 		
 		int expectedMoney = 1200;
+		int actualMoney = player.getMoney();
+		
+		assertEquals(expectedMoney, actualMoney);
+	}
+	
+	@Test
+	public void testRailRoad(){
+		railroadTile = new RailRoad();
+		player = new Player();
+		
+		player.setMoney(8000);
+		railroadTile.collectRailroadFee(player);
+		
+		int expectedMoney = 8200;
 		int actualMoney = player.getMoney();
 		
 		assertEquals(expectedMoney, actualMoney);
