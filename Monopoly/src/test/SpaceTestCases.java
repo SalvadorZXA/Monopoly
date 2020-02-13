@@ -7,6 +7,7 @@ import java.awt.Color;
 import org.junit.After;
 import org.junit.Test;
 
+import production.Go;
 import production.IncomeTax;
 import production.Player;
 import production.Property;
@@ -15,6 +16,7 @@ public class SpaceTestCases {
 	
 	Property propertyTile;
 	IncomeTax incomeTaxTile;
+	Go goTile;
 	Player player;
 	
 	@After
@@ -63,6 +65,20 @@ public class SpaceTestCases {
 		incomeTaxTile.collectTheMonies(player);
 		
 		int expectedMoney = 540;
+		int actualMoney = player.getMoney();
+		
+		assertEquals(expectedMoney, actualMoney);
+	}
+	
+	@Test
+	public void testGoTile(){
+		goTile = new Go();
+		player = new Player();
+		
+		player.setMoney(1000);
+		goTile.giveBasicIncome(player);
+		
+		int expectedMoney = 1200;
 		int actualMoney = player.getMoney();
 		
 		assertEquals(expectedMoney, actualMoney);
