@@ -5,36 +5,70 @@ import static org.junit.Assert.*;
 import java.awt.Color;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Test;
 
+import production.IncomeTax;
+import production.Player;
 import production.Property;
 
 public class SpaceTestCases {
 	
-	Property property;
+	Property propertyTile;
+	IncomeTax incomeTaxTile;
+	Player player;
 	
 	@After
 	public void tearDown(){
-		property = null;
+		propertyTile = null;
+		incomeTaxTile = null;
+		player = null;
 	}
 
 	@Test
 	public void testNotNullPropety() {
-		property = new Property();
-		assertNotNull(property);
+		propertyTile = new Property();
+		assertNotNull(propertyTile);
 	}
 	@Test
 	public void testCreateProperty1(){
-		property = new Property();
-		property.setColor(Color.GRAY);
-		property.setCost(60);
-		property.setName("Mediteranian Avenue");
+		propertyTile = new Property();
+		propertyTile.setColor(Color.GRAY);
+		propertyTile.setCost(60);
+		propertyTile.setName("Mediteranian Avenue");
 		
-		System.out.println("Property "+property.getName()+" with color "+ property.getColor()
-				+" with cost "+ property.getCost());
+//		System.out.println("Property "+propertyTile.getName()+" with color "+ propertyTile.getColor()
+//				+" with cost "+ propertyTile.getCost());
 		
-		assertEquals(Color.GRAY, property.getColor());
-		assertEquals(60,property.getCost());
-		assertEquals("Mediteranian Avenue", property.getName());
+		assertEquals(Color.GRAY, propertyTile.getColor());
+		assertEquals(60,propertyTile.getCost());
+		assertEquals("Mediteranian Avenue", propertyTile.getName());
+	}
+	@Test
+	public void testLandOnIncomeTaxTile200(){
+		incomeTaxTile = new IncomeTax();
+		player = new Player();
+		
+		player.setMoney(600);
+		incomeTaxTile.collectTheMonies(player);
+		
+		int expectedMoney = 400;
+		int actualMoney = player.getMoney();
+		
+		assertEquals(expectedMoney, actualMoney);
+	}
+	
+	@Test
+	public void testLandOnIncomeTaxTile10(){
+		incomeTaxTile = new IncomeTax();
+		player = new Player();
+		
+		player.setMoney(600);
+		incomeTaxTile.collectTheMonies(player);
+		
+		int expectedMoney = 540;
+		int actualMoney = player.getMoney();
+		
+		assertEquals(expectedMoney, actualMoney);
 	}
 }

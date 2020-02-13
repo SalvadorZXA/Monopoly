@@ -1,12 +1,10 @@
 package production;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class IncomeTax implements Space{
 	
 	String Name;
-	List<Player> Players;
 
 	public void setName(String name) {
 		Name = name;
@@ -16,36 +14,24 @@ public class IncomeTax implements Space{
 		return Name;
 	}
 
-	public void setPlayers(List<Player> players) {
-		Players = players;		
-	}
-
-	public List<Player> getPlayers() {
-		return Players;
-	}
-
-	public void collectTheMonies(String playerName){
+	public void collectTheMonies(Player player){
 		
 	    Scanner myObj = new Scanner(System.in);
 	    System.out.println("Pay $200 or 10%?");
 
 	    String choice = myObj.nextLine();
+	    int ammountToBeDeducted = Integer.parseInt(choice);
 		
-		for(Player p : Players){
+		if(ammountToBeDeducted==200){
+			player.setMoney(player.getMoney()-200);
+			System.out.println("$200 have been deducted from your account.");
 			
-			if(p.getToken().equals(playerName)){
-				
-				if(choice=="200"){
-					p.setMoney(p.getMoney()-200);
-					System.out.print("$200 have been deducted from your account.");
-					
-				}else if(choice=="10%"){
-					int percent = (int)(p.getMoney()*.10);
-					p.setMoney(p.getMoney()-percent);
-					System.out.print("10% has been decucted from your account.");
-				}
-			}
+		}else if(ammountToBeDeducted==10){
+			int percent = (int)(player.getMoney()*.10);
+			player.setMoney(player.getMoney()-percent);
+			System.out.println("10% has been decucted from your account.");
 		}
+		
 		myObj.close();
 	}
 }
