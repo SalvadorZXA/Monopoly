@@ -30,6 +30,9 @@ public class SpaceTestCases {
 		property.setCost(60);
 		property.setName("Mediteranian Avenue");
 		
+		System.out.println("Property "+property.getName()+" with color "+ property.getColor()
+				+" with cost "+ property.getCost());
+		
 		assertEquals(Color.GRAY, property.getColor());
 		assertEquals(60,property.getCost());
 		assertEquals("Mediteranian Avenue", property.getName());

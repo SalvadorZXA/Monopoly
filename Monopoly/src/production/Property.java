@@ -1,12 +1,10 @@
 package production;
 
 import java.awt.Color;
-import java.util.List;
 
 public class Property implements Space{
 	
 	String Name;
-	List<Player> Players;
 	String Owner;
 	Color Color;
 	int Cost;
@@ -17,14 +15,6 @@ public class Property implements Space{
 
 	public String getName() {
 		return Name;
-	}
-	
-	public void setPlayers(List<Player> players){
-		Players = players;
-	}
-	
-	public List<Player> getPlayers(){
-		return Players;
 	}
 
 	public void setColor(Color color){
