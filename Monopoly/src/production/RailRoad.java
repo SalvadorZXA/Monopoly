@@ -13,7 +13,7 @@ public class RailRoad {
 
 	public void collectRailroadFee(Player player){
 		
-		player.setMoney(player.getMoney()+200);
+		player.setMoney(player.getMoney()-200);
 		System.out.println(Name+" Railroad has charged you $200.");	
 	}
 }

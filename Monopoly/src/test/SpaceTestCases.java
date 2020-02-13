@@ -7,6 +7,7 @@ import java.awt.Color;
 import org.junit.After;
 import org.junit.Test;
 
+import production.Electric;
 import production.Go;
 import production.IncomeTax;
 import production.Player;
@@ -18,6 +19,7 @@ public class SpaceTestCases {
 	Property propertyTile;
 	IncomeTax incomeTaxTile;
 	RailRoad railroadTile;
+	Electric electricTile;
 	Go goTile;
 	Player player;
 	
@@ -25,6 +27,8 @@ public class SpaceTestCases {
 	public void tearDown(){
 		propertyTile = null;
 		incomeTaxTile = null;
+		railroadTile = null;
+		electricTile = null;
 		player = null;
 	}
 
@@ -94,7 +98,20 @@ public class SpaceTestCases {
 		player.setMoney(8000);
 		railroadTile.collectRailroadFee(player);
 		
-		int expectedMoney = 8200;
+		int expectedMoney = 7800;
+		int actualMoney = player.getMoney();
+		
+		assertEquals(expectedMoney, actualMoney);
+	}
+	@Test
+	public void testElectric(){
+		electricTile = new Electric();
+		player = new Player();
+		
+		player.setMoney(7000);
+		electricTile.collectElectricFee(player);
+		
+		int expectedMoney = 6800;
 		int actualMoney = player.getMoney();
 		
 		assertEquals(expectedMoney, actualMoney);
